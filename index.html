@@ -93,8 +93,8 @@
     <h1>Social Media Platform</h1>
 
     <!-- Sign Up and Login buttons -->
-    <button onclick="location.href='signup.php'">Sign Up</button>
-    <button onclick="location.href='login.php'">Login</button>
+    <button onclick="location.href='signup.html'">Sign Up</button>
+    <button onclick="location.href='login.html'">Login</button>
 
     <!-- Feed of other people's posts -->
     <div id="feed">
@@ -165,6 +165,8 @@
                 // Handle response from server
                 console.log(data);
                 // Assuming data contains a success message or error
+                // Clear the form
+                document.getElementById("newPostForm").reset();
                 // Reload the page to see the newly added post
                 location.reload();
             })
