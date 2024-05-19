@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform</title>
+    <style>
+        /* CSS for modern buttons, center alignment, and Google-themed login */
+        body {
+            font-family: 'Audiowide', cursive;
+            text-align: center;
+        }
+        
+        button {
+            font-family: 'Audiowide', cursive;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        /* Google-themed login */
+        .google-login {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .google-login:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* CSS for the post container */
+        .post-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 80%;
+        }
+
+        .comments-slider {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        .comments-container {
+            display: none;
+        }
+
+        .like-dislike-buttons {
+            margin-top: 10px;
+        }
+
+        .like, .dislike {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .like:hover, .dislike:hover {
+            color: #555;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Social Media Platform</h1>
+
+    <!-- Sign Up and Login buttons -->
+    <button id="signUpButton">Sign Up</button>
+    <button id="loginButton">Login</button>
+
+    <!-- Feed of other people's posts -->
+    <div id="feed">
+        <!-- Posts will be displayed here -->
+    </div>
+
+    <!-- Plus button for adding a new post -->
+    <button id="addPostButton" onclick="showPostForm()">+</button>
+
+    <!-- Post form (initially hidden) -->
+    <div id="postForm" style="display: none;">
+        <h2>Create a Post</h2>
+        <form id="newPostForm" enctype="multipart/form-data">
+            <input type="file" name="photo" accept="image/*" required><br>
+            <input type="text" name="name" placeholder="Your Name" required><br>
+            <textarea name="description" placeholder="Description" required></textarea><br>
+            <select name="fontFamily">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <!-- Add more font options as needed -->
+            </select><br>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <!-- Comments section -->
+    <h2 id="commentsTitle" style="display: none;">Comments</h2>
+    <div id="comments" style="display: none;">
+        <!-- Comments will be displayed here -->
+    </div>
+
+    <!-- Reply form (initially hidden) -->
+    <div id="replyForm" style="display: none;">
+        <h3>Reply to Comment</h3>
+        <form id="newReplyForm">
+            <input type="text" name="replyName" placeholder="Your Name" required><br>
+            <textarea name="reply" placeholder="Your Reply" required></textarea><br>
+            <button type="submit">Reply</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle visibility of post form
+        function showPostForm() {
+            var postForm = document.getElementById("postForm");
+            if (postForm.style.display === "none") {
+                postForm.style.display = "block";
+            } else {
+                postForm.style.display = "none";
+            }
+        }
+
+        // Function to handle form submission for posting photos
+        document.getElementById("newPostForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            
+            // AJAX request to upload the photo
+            // Replace 'upload_photo.php' with your server-side script
+            // Example:
+            // fetch('upload_photo.php', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     // Handle response from server
+            //     console.log(data);
+            // })
+            // .catch(error => console.error('Error:', error));
+        });
+
+        // Function to handle form submission for adding comments
+        document.getElementById("newReplyForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            
+            // AJAX request to add the comment
+            // Replace 'add_comment.php' with your server-side script
+            // Example:
+            // fetch('add_comment.php', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     // Handle response from server
+            //     console.log(data);
+            // })
+            // .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
