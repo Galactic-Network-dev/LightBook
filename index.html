@@ -155,26 +155,21 @@
             event.preventDefault();
             let formData = new FormData(this);
             
-            // AJAX request to upload the photo
-            fetch('upload_photo.php', {
+            // AJAX request to save the post
+            fetch('save_post.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
                 // Handle response from server
                 console.log(data);
-                // Assuming data contains information about the posted post
-                displayPost(data);
+                // Assuming data contains a success message or error
+                // Reload the page to see the newly added post
+                location.reload();
             })
             .catch(error => console.error('Error:', error));
         });
-
-        // Function to display the newly posted post
-        function displayPost(data) {
-            var feed = document.getElementById("feed");
-            var postContainer = document.createElement("div");
-            postContainer.classList.add("post-container");
-
-            var postName = document.createElement("h3");
-            postName.textContent
+    </script>
+</body>
+</html>
