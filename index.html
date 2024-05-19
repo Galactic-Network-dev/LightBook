@@ -51,8 +51,16 @@
             padding: 10px;
             margin-bottom: 20px;
             text-align: left;
-            display: inline-block;
             width: 80%;
+            display: inline-block;
+        }
+
+        .post-container img {
+            max-width: 100%;
+        }
+
+        .post-container hr {
+            margin: 20px 0;
         }
 
         .comments-slider {
@@ -148,27 +156,25 @@
             let formData = new FormData(this);
             
             // AJAX request to upload the photo
-            // Replace 'upload_photo.php' with your server-side script
-            // Example:
-            // fetch('upload_photo.php', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     // Handle response from server
-            //     console.log(data);
-            // })
-            // .catch(error => console.error('Error:', error));
+            fetch('upload_photo.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response from server
+                console.log(data);
+                // Assuming data contains information about the posted post
+                displayPost(data);
+            })
+            .catch(error => console.error('Error:', error));
         });
 
-        // Function to handle form submission for adding comments
-        document.getElementById("newReplyForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let formData = new FormData(this);
-            
-            // AJAX request to add the comment
-            // Replace 'add_comment.php' with your server-side script
-            // Example:
-            // fetch('add_comment.php', {
-            //     method: '
+        // Function to display the newly posted post
+        function displayPost(data) {
+            var feed = document.getElementById("feed");
+            var postContainer = document.createElement("div");
+            postContainer.classList.add("post-container");
+
+            var postName = document.createElement("h3");
+            postName.textContent
